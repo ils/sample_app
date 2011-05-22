@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
   
+  get "users/new"
+
   root :to => "pages#home"
   #remember to delete public/index.html
   
@@ -11,6 +13,7 @@ SampleApp::Application.routes.draw do
   match '/help', :to => 'pages#help'
   #these lines create named paths
   
+  match '/signup', :to => 'users#new'
   
   
   
