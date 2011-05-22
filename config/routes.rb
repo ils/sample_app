@@ -1,11 +1,18 @@
 SampleApp::Application.routes.draw do
-  get "pages/home"
-
-  get "pages/contact"
   
-  get "pages/about"
+  root :to => "pages#home"
   
-  get "pages/help"
+  match '/contact', :to => 'pages#contact'
+  #Match /contact to the PAGES controller's CONTACT action
+  #This is used instead of get "pages/contact"
+  
+  match '/about', :to => 'pages#about'
+  match '/help', :to => 'pages#help'
+  match '/', :to => 'pages#home'
+  
+  
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
