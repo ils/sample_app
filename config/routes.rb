@@ -1,6 +1,7 @@
 SampleApp::Application.routes.draw do
   
   root :to => "pages#home"
+  #remember to delete public/index.html
   
   match '/contact', :to => 'pages#contact'
   #Match /contact to the PAGES controller's CONTACT action
@@ -8,7 +9,7 @@ SampleApp::Application.routes.draw do
   
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
-  match '/', :to => 'pages#home'
+  #these lines create named paths
   
   
   
