@@ -1,6 +1,7 @@
 SampleApp::Application.routes.draw do
-  
-  get "users/new"
+  resources :users
+  #very important, grants all actions needed for a RESTful Users resource
+
 
   root :to => "pages#home"
   #remember to delete public/index.html
@@ -8,11 +9,8 @@ SampleApp::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   #Match /contact to the PAGES controller's CONTACT action
   #This is used instead of get "pages/contact"
-  
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
-  #these lines create named paths
-  
   match '/signup', :to => 'users#new'
   
   
