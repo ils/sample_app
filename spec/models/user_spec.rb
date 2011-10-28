@@ -79,8 +79,8 @@ describe "password validations" do
       end
 
       it "should reject long passwords" do
-        short = "a" * 41
-        User.new(@attr.merge(:password => short)).should_not be_valid
+        long = "a" * 41
+        User.new(@attr.merge(:password => long)).should_not be_valid
       end
     end
 
@@ -99,6 +99,29 @@ describe "password encryption" do
       end
  end
 
+describe "password encryption" do
+  
+  before(:each) do
+    @user = User.create!(@attr)
+  end
+
+  describe "has_password? method" do
+    
+  it "should be true if the passwords match" do
+        @user.has_password?(@attr[:password]).should be_true
+      end
+    
+    it "should be false if the passwords don't match" do
+      @user.has_password?("invalid").should be_false
+    end
+    
+  end  
+
+
+
+  
+end
+
 end
 
 #with Rspec:
@@ -111,8 +134,25 @@ end
 #
 # Table name: users
 #
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id                 :integer         not null, primary key
+#  name               :string(255)
+#  email              :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  encrypted_password :string(255)
+#
+
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer         not null, primary key
+#  name               :string(255)
+#  email              :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  encrypted_password :string(255)
+#  salt               :string(255)
+#
+
