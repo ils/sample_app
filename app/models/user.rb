@@ -23,6 +23,13 @@ class User < ActiveRecord::Base
     def has_password?(submitted_password)
       encrypted_password == encrypt(submitted_password)
     end
+    
+    #Can be used to authenticate a user
+    def self.authenticate(email, submitted_password)
+      user = find_by_email(email)
+      return nil if user.nil?
+      return user if user.has_password?(submitted_password)
+    end
   
   private
   
@@ -42,7 +49,7 @@ class User < ActiveRecord::Base
       self.encrypted_password = encrypt(password)
     end
     
-    #performs the one-way encryption of a given string
+    #performs the one-way encryption of the salt and a given string
     def encrypt(string)
       secure_hash("#{salt}--#{string}")
     end
