@@ -3,7 +3,7 @@ require 'spec_helper'
 
 
 describe User do
-
+   
   before(:each) do
     @attr = { :name => "Example User",
       :email => "user@example.com",
@@ -120,6 +120,10 @@ describe User do
 
   describe "has_password? method" do
     
+  before(:each) do
+    @user = User.create!(@attr)
+  end
+ 
       it "should be true if the passwords match" do
         @user.has_password?(@attr[:password]).should be_true
       end
