@@ -130,3 +130,8 @@ footer {
 footer nav {
 	float: none;
 }
+
+/* Signup Form */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
